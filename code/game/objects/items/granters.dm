@@ -416,6 +416,34 @@
 		name = "blank tablet"
 		icon_state = "stone_tablet_blank"
 
+
+/obj/item/book/granter/martial/nyanjitsu
+	martial = /datum/martial_art/nyanjitsu
+	name = "hairball"
+	martialname = "Nyan Jitsu"
+	desc = "A hairball somehow containing arcane cat people writings. However that works"
+	force = 0
+	greet = "<span class='sciradio'>You have learned the ancient martial art of Nyan Jitsu! </span>"
+	icon = 'icons/obj/library.dmi'
+	icon_state = "stone_tablet"
+	remarks = list("Feasting on the insides of your enemies...", "Some of these techniques look a bit dizzying...", "Not like I need armor anyways...", "Don't get shot, whatever that means...")
+/obj/item/book/granter/martial/nyanjitsu/already_known(mob/user)
+	if(!iscatperson(user))
+		to_chat(user, span_warning("You can't tell whether Runtime created this, or if it contains something more"))
+		return TRUE
+	return ..()
+/obj/item/book/granter/martial/nyanjitsu/onlearned(mob/living/carbon/user)
+	..()
+	if(oneuse == TRUE)
+		desc = "Whatever information this held is gone"
+		name = "dried hairball"
+		icon_state = "stone_tablet_blank"
+
+
+
+
+
+
 /obj/item/book/granter/martial/plasma_fist
 	martial = /datum/martial_art/plasma_fist
 	name = "frayed scroll"
