@@ -40,11 +40,16 @@
 						  span_userdanger("You spin around like a doofus."))
 		return
 	playsound(get_turf(A), 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
-	if(D.flash_act(1,6))
+	if(D.flash_act(1,10))
 		D.visible_message(span_danger("[A] blinds [D] with their tail!"), \
 										span_userdanger("[A] blinds you with their tail!"))
 		to_chat(A, span_danger("You swipe your tail across [D]'s eyes, blinding them!"))
 		D.Paralyze(rand(20,30))
+	else
+		D.flash_act((D.get_eye_protection() + 1),3)
+		D.visible_message(span_danger("[A] swipes their tail across [D]'s eye protection!"), \
+										span_userdanger("[A] blinds you with their tail!"))
+		to_chat(A, span_danger("You swipe your tail across [D]'s eye protection, failing to properly blind them!"))
 
 
 //I DID NOT STEAL THIS FROM FLYING FANG NOW SHUTUP
