@@ -90,14 +90,12 @@
 	add_to_streak("D",D)
 	if(check_streak(A,D))
 		return TRUE
-	basic_hit(A,D)
 	return FALSE
 
 /datum/martial_art/nyanjitsu/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("G",D)
 	if(check_streak(A,D))
 		return TRUE
-	basic_hit(A,D)
 	return FALSE
 
 
