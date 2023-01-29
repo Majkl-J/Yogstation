@@ -44,7 +44,7 @@
 		D.visible_message(span_danger("[A] blinds [D] with their tail!"), \
 										span_userdanger("[A] blinds you with their tail!"))
 		to_chat(A, span_danger("You swipe your tail across [D]'s eyes, blinding them!"))
-		D.Paralyze(rand(20,30))
+		D.Knockdown(rand(50,80))
 	else
 		D.flash_act((D.get_eye_protection() + 1),3)
 		D.visible_message(span_danger("[A] swipes their tail across [D]'s eye protection!"), \
