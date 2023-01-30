@@ -10,7 +10,7 @@
 	id = MARTIALART_NYANJITSU
 	no_guns = TRUE
 	help_verb = /mob/living/carbon/human/proc/nyanjitsu_help
-		var/datum/action/innate/cat_hook/linked_hook
+	var/datum/action/innate/cat_hook/linked_hook
 
 /datum/martial_art/nyanjitsu/can_use(mob/living/carbon/human/H)
 	return iscatperson(H)
