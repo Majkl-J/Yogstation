@@ -9,7 +9,8 @@
 	name = "Nyan Jitsu"
 	id = MARTIALART_NYANJITSU
 	no_guns = TRUE
-	help_verb = /mob/living/carbon/human/proc/nyanjitsu_help	
+	help_verb = /mob/living/carbon/human/proc/nyanjitsu_help
+		var/datum/action/innate/cat_hook/linked_hook
 
 /datum/martial_art/nyanjitsu/can_use(mob/living/carbon/human/H)
 	return iscatperson(H)
@@ -51,7 +52,7 @@
 										span_userdanger("[A] blinds you with their tail!"))
 		to_chat(A, span_danger("You swipe your tail across [D]'s eye protection, failing to properly blind them!"))
 
-
+//Lacerate more like degenerate (Deals 30 damage and bleeds the target)
 //I DID NOT STEAL THIS FROM FLYING FANG NOW SHUTUP
 /datum/martial_art/nyanjitsu/proc/Lacerate(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!can_use(A))
@@ -73,11 +74,61 @@
 
 
 
+/datum/action/innate/cat_hook
+	name = "Hook"
+	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	button_icon_state = "lizard_tackle"
+	background_icon_state = "bg_default"
+	desc = "Prepare to grab a target with your tail, with a successful hit immobilising them and pulling them closer."
+	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUN | AB_CHECK_LYING | AB_CHECK_CONSCIOUS
+	var/datum/martial_art/nyanjitsu/linked_martial
 
+/datum/action/innate/cat_hook/New()
+	..()
+	START_PROCESSING(SSfastprocess, src)
 
+/datum/action/innate/cat_hook/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
 
+/datum/action/innate/cat_hook/process()
+	UpdateButtonIcon() //keep the button updated
 
+/obj/item/gun/magic/hook/cat_hook
+	name = "cat tail"
+	desc = "Pull them closer."
+	ammo_type = /obj/item/ammo_casing/magic/hook/cat_hook
+	icon_state = "hook"
+	item_state = "chain"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+	fire_sound = 'sound/weapons/batonextend.ogg'
+	max_charges = 1
+	force = 0
 
+/obj/item/ammo_casing/magic/hook/cat_hook
+	projectile_type = /obj/item/projectile/hook/cat_tail
+	caliber = "hook"
+	icon_state = "hook"
+
+/obj/item/projectile/hook/cat_tail
+	name = "cat tail"
+	icon_state = "hook"
+	damage = 0
+	damage_type = BRUTE
+	hitsound = 'sound/effects/splat.ogg'
+	immobilize = 2
+	range = 5
+	armour_penetration = 25
+
+/obj/item/projectile/hook/cat_tail/on_hit(atom/target)
+	. = ..()
+	if(ismovable(target))
+		var/atom/movable/A = target
+		if(A.anchored)
+			return
+		A.visible_message(span_danger("[A] is snagged by [firer]'s cat!"))
+		new /datum/forced_movement(A, get_turf(firer), 5, TRUE)
 
 /datum/martial_art/nyanjitsu/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("H",D)
@@ -105,9 +156,20 @@
 	set category = "Nyan Jitsu"
 	to_chat(usr, "<b><i>You try to remember some of the basics of Nyan Jitsu.</i></b>")
 
-	to_chat(usr, span_warning("However, the primitive instincts gained through this training prevent you from using guns, stun weapons, or armor."))
+	to_chat(usr, span_warning("The cat instincts gained through this training prevent you from using ranged weaponry."))
 	to_chat(usr, span_notice("<b>All of your unarmed attacks deal increased brute damage with a small amount of armor piercing</b>"))
 	
 	to_chat(usr, "[span_notice("Tail Swipe")]: Disarm Harm. Blinds the person for 3-6 Second Depending whether they have eye Protection")
 	to_chat(usr, "[span_notice("Lacerate")]: Harm Harm Harm Harm. Extend your claws past their normal capabilities and inflict heavy wounds upon the target's chest")
 	to_chat(usr, "[span_notice("CoolName")]: Disarm Disarm Disarm. Strike Fear Into Your Foes, confusing them.")
+
+
+/datum/martial_art/nyanjitsu/teach(mob/living/carbon/human/H,make_temporary=0)
+	..()
+	if(!linked_hook)
+		linked_hook = new
+		linked_hook.linked_martial = src
+	linked_hook.Grant(H)
+/datum/martial_art/nyanjitsu/on_remove(mob/living/carbon/human/H)
+	..()
+	linked_hook.Remove(H)
