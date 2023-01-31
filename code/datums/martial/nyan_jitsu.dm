@@ -11,6 +11,7 @@
 	no_guns = TRUE
 	help_verb = /mob/living/carbon/human/proc/nyanjitsu_help
 	var/datum/action/innate/cat_hook/linked_hook
+	var/hooking = FALSE
 
 /datum/martial_art/nyanjitsu/can_use(mob/living/carbon/human/H)
 	return iscatperson(H)
@@ -35,8 +36,7 @@
 	if(!can_use(A))
 		return
 	A.emote("spin")
-	var/obj/item/organ/tail = A.getorganslot(ORGAN_SLOT_TAIL)
-	if(!istype(tail, /obj/item/organ/tail/cat))
+	if(!istype(A.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail/cat))
 		A.visible_message(span_danger("[A] spins around."), \
 						  span_userdanger("You spin around like a doofus."))
 		return
@@ -75,7 +75,7 @@
 
 
 /datum/action/innate/cat_hook
-	name = "Hook"
+	name = "Tail hook"
 	icon_icon = 'icons/mob/actions/actions_items.dmi'
 	button_icon_state = "lizard_tackle"
 	background_icon_state = "bg_default"
@@ -93,6 +93,28 @@
 
 /datum/action/innate/cat_hook/process()
 	UpdateButtonIcon() //keep the button updated
+
+/datum/action/innate/cat_hook/IsAvailable()
+	. = ..()
+	if(linked_martial.hooking || !linked_martial.can_use(owner))
+		return FALSE
+
+/datum/action/innate/cat_hook/Activate(silent)
+	if(!istype(owner.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail/cat))
+		owner.visible_message(span_userdanger("You have no tail to use this with!"))
+		return
+	if(!silent)
+		owner.visible_message(span_danger("[owner] prepares to hook someone with their tail!"), "<b><i>You will now hook people with your tail as your next attack.</i></b>")
+	owner.click_intercept = src
+	active = TRUE
+	background_icon_state = "bg_default_on"
+
+/datum/action/innate/lizard_leap/Deactivate(silent)
+	if(!silent)
+		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>You will no longer hook people with your tail on attack.</i></b>")
+	owner.click_intercept = null
+	active = FALSE
+	background_icon_state = "bg_default"
 
 /obj/item/gun/magic/hook/cat_hook
 	name = "cat tail"
