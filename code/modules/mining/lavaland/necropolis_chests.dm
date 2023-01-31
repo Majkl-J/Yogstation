@@ -499,7 +499,7 @@ GLOBAL_LIST_EMPTY(aide_list)
 		var/atom/movable/A = target
 		if(A.anchored)
 			return
-		A.visible_message(span_danger("[A] is snagged by [firer]'s hook!"))
+		A.visible_message(span_danger("[A] is snagged by [firer]'s [src]!"))
 		new /datum/forced_movement(A, get_turf(firer), 5, TRUE)
 		//TODO: keep the chain beamed to A
 		//TODO: needs a callback to delete the chain

@@ -10,8 +10,7 @@
 	id = MARTIALART_NYANJITSU
 	no_guns = TRUE
 	help_verb = /mob/living/carbon/human/proc/nyanjitsu_help
-	var/datum/action/innate/cat_hook/linked_hook
-	var/hooking = FALSE
+	var/obj/effect/proc_holder/spell/aimed/cat_hook/linked_hook
 
 /datum/martial_art/nyanjitsu/can_use(mob/living/carbon/human/H)
 	return iscatperson(H)
@@ -73,48 +72,25 @@
 /datum/martial_art/nyanjitsu/proc/CoolName(mob/living/carbon/human/A, mob/living/carbon/human/D)
 
 
+/*
 
-/datum/action/innate/cat_hook
+
+		ALL THE SPELL STUFF MAY GOD HAVE MERCY ON MY SOUL
+
+
+*/
+/obj/effect/proc_holder/spell/aimed/cat_hook
 	name = "Tail hook"
-	icon_icon = 'icons/mob/actions/actions_items.dmi'
-	button_icon_state = "lizard_tackle"
-	background_icon_state = "bg_default"
 	desc = "Prepare to grab a target with your tail, with a successful hit immobilising them and pulling them closer."
-	check_flags = AB_CHECK_RESTRAINED | AB_CHECK_STUN | AB_CHECK_LYING | AB_CHECK_CONSCIOUS
+	active_msg = "You focus on hooking with your tail!"
+	deactive_msg = "You defocus from using your tail."
+	action_icon = 'icons/mob/actions/actions_items.dmi'
+	clothes_req = FALSE
+	antimagic_allowed = FALSE
+	base_icon_state = "lizard_tackle"
+	action_icon_state = "lizard_tackle"
+	projectile_type = /obj/item/projectile/hook/cat_tail
 	var/datum/martial_art/nyanjitsu/linked_martial
-
-/datum/action/innate/cat_hook/New()
-	..()
-	START_PROCESSING(SSfastprocess, src)
-
-/datum/action/innate/cat_hook/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	return ..()
-
-/datum/action/innate/cat_hook/process()
-	UpdateButtonIcon() //keep the button updated
-
-/datum/action/innate/cat_hook/IsAvailable()
-	. = ..()
-	if(linked_martial.hooking || !linked_martial.can_use(owner))
-		return FALSE
-
-/datum/action/innate/cat_hook/Activate(silent)
-	if(!istype(owner.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail/cat))
-		owner.visible_message(span_userdanger("You have no tail to use this with!"))
-		return
-	if(!silent)
-		owner.visible_message(span_danger("[owner] prepares to hook someone with their tail!"), "<b><i>You will now hook people with your tail as your next attack.</i></b>")
-	owner.click_intercept = src
-	active = TRUE
-	background_icon_state = "bg_default_on"
-
-/datum/action/innate/lizard_leap/Deactivate(silent)
-	if(!silent)
-		owner.visible_message(span_danger("[owner] assumes a neutral stance."), "<b><i>You will no longer hook people with your tail on attack.</i></b>")
-	owner.click_intercept = null
-	active = FALSE
-	background_icon_state = "bg_default"
 
 /obj/item/gun/magic/hook/cat_hook
 	name = "cat tail"
@@ -143,14 +119,6 @@
 	range = 5
 	armour_penetration = 25
 
-/obj/item/projectile/hook/cat_tail/on_hit(atom/target)
-	. = ..()
-	if(ismovable(target))
-		var/atom/movable/A = target
-		if(A.anchored)
-			return
-		A.visible_message(span_danger("[A] is snagged by [firer]'s cat!"))
-		new /datum/forced_movement(A, get_turf(firer), 5, TRUE)
 
 /datum/martial_art/nyanjitsu/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	add_to_streak("H",D)
@@ -191,7 +159,6 @@
 	if(!linked_hook)
 		linked_hook = new
 		linked_hook.linked_martial = src
-	linked_hook.Grant(H)
+	H.mind.AddSpell(linked_hook)
 /datum/martial_art/nyanjitsu/on_remove(mob/living/carbon/human/H)
 	..()
-	linked_hook.Remove(H)
