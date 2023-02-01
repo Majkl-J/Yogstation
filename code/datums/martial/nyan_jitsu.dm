@@ -93,30 +93,13 @@
 	projectile_type = /obj/item/projectile/hook/cat_tail
 	var/datum/martial_art/nyanjitsu/linked_martial
 
-/obj/item/gun/magic/hook/cat_hook
-	name = "cat tail"
-	desc = "Pull them closer."
-	ammo_type = /obj/item/ammo_casing/magic/hook/cat_hook
-	icon_state = "hook"
-	item_state = "chain"
-	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
-	fire_sound = 'sound/weapons/batonextend.ogg'
-	max_charges = 1
-	force = 0
-
-/obj/item/ammo_casing/magic/hook/cat_hook
-	projectile_type = /obj/item/projectile/hook/cat_tail
-	caliber = "hook"
-	icon_state = "hook"
-
 /obj/item/projectile/hook/cat_tail
 	name = "cat tail"
 	icon_state = "hook"
-	damage = 0
+	damage = 5
 	damage_type = BRUTE
 	hitsound = 'sound/effects/splat.ogg'
-	immobilize = 2
+	immobilize = 4
 	range = 5
 	armour_penetration = 25
 
