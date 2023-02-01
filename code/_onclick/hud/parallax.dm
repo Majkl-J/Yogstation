@@ -60,10 +60,10 @@
 	var/mob/screenmob = viewmob || mymob
 	var/client/C = screenmob.client
 	if(C.prefs)
-		var/pref = C.prefs.read_preference(/datum/preference/choiced/parallax)
+		var/pref = C.prefs.parallax
 		if (isnull(pref))
 			pref = PARALLAX_HIGH
-		switch(pref)
+		switch(C.prefs.parallax)
 			if (PARALLAX_INSANE)
 				C.parallax_throttle = FALSE
 				C.parallax_layers_max = 5

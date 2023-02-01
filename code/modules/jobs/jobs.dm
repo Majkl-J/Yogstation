@@ -58,7 +58,7 @@ GLOBAL_LIST_INIT(original_security_positions, list(
 GLOBAL_LIST_INIT(original_nonhuman_positions, list(
 	"AI",
 	"Cyborg",
-	"pAI"))
+	ROLE_PAI))
 
 GLOBAL_LIST_INIT(alt_command_positions, list(
 	"Station Commander", "Facility Director", "Chief Executive Officer",

@@ -10,7 +10,6 @@ GLOBAL_LIST_EMPTY(ninja_capture)
 	var/helping_station = FALSE
 	var/give_objectives = TRUE
 	var/give_equipment = TRUE
-	preview_outfit = /datum/outfit/ninja
 
 /datum/antagonist/ninja/New()
 	if(helping_station)

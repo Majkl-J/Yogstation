@@ -24,7 +24,8 @@
 		return MAP_ERROR
 
 	var/mob/living/carbon/human/operative = new(pick(spawn_locs))
-	operative.randomize_human_appearance(~(RANDOMIZE_SPECIES))
+	var/datum/preferences/A = new
+	A.copy_to(operative)
 	operative.dna.update_dna_identity()
 	var/datum/mind/Mind = new /datum/mind(selected.key)
 	Mind.assigned_role = "Lone Operative"

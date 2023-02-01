@@ -233,7 +233,6 @@
 	var/cover_open = FALSE
 	can_suppress = FALSE
 	fire_delay = 1
-	burst_size = 2
 	spread = 7
 	pin = /obj/item/firing_pin/implant/pindicate
 	bolt_type = BOLT_TYPE_OPEN

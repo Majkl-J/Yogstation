@@ -1,13 +1,10 @@
-/*!
- * Copyright (c) 2020 Aleksej Komarov
- * SPDX-License-Identifier: MIT
- */
-
 /**
  * tgui subsystem
  *
  * Contains all tgui state and subsystem code.
  *
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
  */
 
 SUBSYSTEM_DEF(tgui)
@@ -28,10 +25,6 @@ SUBSYSTEM_DEF(tgui)
 
 /datum/controller/subsystem/tgui/PreInit()
 	basehtml = file2text('tgui/public/tgui.html')
-	// Inject inline polyfills
-	var/polyfill = file2text('tgui/public/tgui-polyfill.bundle.js')
-	polyfill = "<script>\n[polyfill]\n</script>"
-	basehtml = replacetextEx(basehtml, "<!-- tgui:inline-polyfill -->", polyfill)
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()
@@ -40,7 +33,7 @@ SUBSYSTEM_DEF(tgui)
 	msg = "P:[length(open_uis)]"
 	return ..()
 
-/datum/controller/subsystem/tgui/fire(resumed = FALSE)
+/datum/controller/subsystem/tgui/fire(resumed = 0)
 	if(!resumed)
 		src.current_run = open_uis.Copy()
 	// Cache for sanic speed (lists are references anyways)
@@ -49,7 +42,7 @@ SUBSYSTEM_DEF(tgui)
 		var/datum/tgui/ui = current_run[current_run.len]
 		current_run.len--
 		// TODO: Move user/src_object check to process()
-		if(ui?.user && ui.src_object)
+		if(ui && ui.user && ui.src_object)
 			ui.process(wait * 0.1)
 		else
 			open_uis.Remove(ui)
@@ -198,7 +191,7 @@ SUBSYSTEM_DEF(tgui)
 		return count
 	for(var/datum/tgui/ui in open_uis_by_src[key])
 		// Check if UI is valid.
-		if(ui?.src_object && ui.user && ui.src_object.ui_host(ui.user))
+		if(ui && ui.src_object && ui.user && ui.src_object.ui_host(ui.user))
 			ui.process(wait * 0.1, force = 1)
 			count++
 	return count
@@ -220,7 +213,7 @@ SUBSYSTEM_DEF(tgui)
 		return count
 	for(var/datum/tgui/ui in open_uis_by_src[key])
 		// Check if UI is valid.
-		if(ui?.src_object && ui.user && ui.src_object.ui_host(ui.user))
+		if(ui && ui.src_object && ui.user && ui.src_object.ui_host(ui.user))
 			ui.close()
 			count++
 	return count
@@ -237,7 +230,7 @@ SUBSYSTEM_DEF(tgui)
 	for(var/key in open_uis_by_src)
 		for(var/datum/tgui/ui in open_uis_by_src[key])
 			// Check if UI is valid.
-			if(ui?.src_object && ui.user && ui.src_object.ui_host(ui.user))
+			if(ui && ui.src_object && ui.user && ui.src_object.ui_host(ui.user))
 				ui.close()
 				count++
 	return count

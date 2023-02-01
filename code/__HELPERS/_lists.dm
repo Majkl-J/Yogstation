@@ -698,12 +698,11 @@
 		else
 			L1[key] = other_value
 
-/// Turns an associative list into a flat list of keys
-/proc/assoc_to_keys(list/input)
-	var/list/keys = list()
+/proc/assoc_list_strip_value(list/input)
+	var/list/ret = list()
 	for(var/key in input)
-		keys += key
-	return keys
+		ret += key
+	return ret
 
 /proc/compare_list(list/l,list/d)
 	if(!islist(l) || !islist(d))

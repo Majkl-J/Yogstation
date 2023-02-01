@@ -74,10 +74,10 @@
 
 /datum/emote/living/carbon/hiss/can_run_emote(mob/living/user, status_check = TRUE, intentional)
 	if(!ishuman(user))
-		return FALSE
+		return
 	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/tongue/T = H?.getorganslot(ORGAN_SLOT_TONGUE)
-	return is_type_in_list(T, viable_tongues) && ..()
+	var/obj/item/organ/tongue/T = H.getorganslot(ORGAN_SLOT_TONGUE)
+	return is_type_in_list(T, viable_tongues)
 
 /datum/emote/living/carbon/human/hug
 	key = "hug"
@@ -118,7 +118,7 @@
 	cooldown = 10 SECONDS
 
 /datum/emote/living/carbon/meow/can_run_emote(mob/living/user, status_check = TRUE, intentional)
-	return iscatperson(user) && ..()
+	return iscatperson(user)
 
 /datum/emote/living/carbon/meow/get_sound(mob/living/user)
 	return pick('sound/voice/feline/meow1.ogg', 'sound/voice/feline/meow2.ogg', 'sound/voice/feline/meow3.ogg', 'sound/voice/feline/meow4.ogg', 'sound/effects/meow1.ogg')
@@ -132,7 +132,7 @@
 	sound = 'sound/voice/rattled.ogg'
 
 /datum/emote/living/carbon/rattle/can_run_emote(mob/living/user, status_check = TRUE, intentional)
-	return isskeleton(user) && ..()
+	return isskeleton(user)
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"
@@ -174,8 +174,10 @@
 		H.dna.species.stop_wagging_tail(H)
 
 /datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
 	var/mob/living/carbon/human/H = user
-	return H?.dna?.species?.can_wag_tail(user) && ..()
+	return H.dna && H.dna.species && H.dna.species.can_wag_tail(user)
 
 /datum/emote/living/carbon/human/wag/select_message_type(mob/user, intentional)
 	. = ..()
@@ -208,8 +210,11 @@
 		. = "closes " + message
 
 /datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional)
+	if(!..())
+		return FALSE
 	var/mob/living/carbon/human/H = user
-	return H?.dna?.species && H?.dna?.features["wings"] != "None" && ..()
+	if(H.dna && H.dna.species && (H.dna.features["wings"] != "None"))
+		return TRUE
 
 /mob/living/carbon/human/proc/OpenWings()
 	if(!dna || !dna.species)
@@ -238,8 +243,11 @@
 		T.Entered(src)
 
 /datum/emote/living/carbon/human/robot_tongue/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
 	var/obj/item/organ/tongue/T = user.getorganslot("tongue")
-	return T?.status == ORGAN_ROBOTIC && ..()
+	if(T.status == ORGAN_ROBOTIC)
+		return TRUE
 
 /datum/emote/living/carbon/human/robot_tongue/beep
 	key = "beep"
@@ -286,7 +294,10 @@
  // Clown Robotic Tongue ONLY. Henk.
 
 /datum/emote/living/carbon/human/robot_tongue/clown/can_run_emote(mob/user, status_check = TRUE , intentional)
-	return user?.mind?.assigned_role == "Clown" && ..()
+	if(!..())
+		return FALSE
+	if(user.mind.assigned_role == "Clown")
+		return TRUE
 
 /datum/emote/living/carbon/human/robot_tongue/clown/honk
 	key = "honk"

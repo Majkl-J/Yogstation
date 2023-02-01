@@ -46,7 +46,8 @@
 	var/mob/living/carbon/human/new_devil = new(spawn_loc)
 	if(!spawn_loc)
 		SSjob.SendToLateJoin(new_devil)
-	new_devil.randomize_human_appearance(~(RANDOMIZE_SPECIES))
+	var/datum/preferences/A = new() //Randomize appearance for the devil.
+	A.copy_to(new_devil)
 	new_devil.dna.update_dna_identity()
 	return new_devil
 

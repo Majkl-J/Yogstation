@@ -4,11 +4,11 @@
  * @license MIT
  */
 
-import { Button, Section, Stack } from 'tgui/components';
+import { Button, Flex, Section } from 'tgui/components';
 import { Pane } from 'tgui/layouts';
 import { NowPlayingWidget, useAudio } from './audio';
 import { ChatPanel, ChatTabs } from './chat';
-import { useGame } from './game';
+import { gameReducer, useGame } from './game';
 import { Notifications } from './Notifications';
 import { PingIndicator } from './ping';
 import { SettingsPanel, useSettings } from './settings';
@@ -34,17 +34,19 @@ export const Panel = (props, context) => {
   }
   return (
     <Pane theme={settings.theme}>
-      <Stack fill vertical>
-        <Stack.Item>
+      <Flex
+        direction="column"
+        height="100%">
+        <Flex.Item>
           <Section fitted>
-            <Stack mr={1} align="center">
-              <Stack.Item grow overflowX="auto">
+            <Flex mx={0.5} align="center">
+              <Flex.Item mx={0.5} grow={1} overflowX="auto">
                 <ChatTabs />
-              </Stack.Item>
-              <Stack.Item>
+              </Flex.Item>
+              <Flex.Item mx={0.5}>
                 <PingIndicator />
-              </Stack.Item>
-              <Stack.Item>
+              </Flex.Item>
+              <Flex.Item mx={0.5}>
                 <Button
                   color="grey"
                   selected={audio.visible}
@@ -52,8 +54,8 @@ export const Panel = (props, context) => {
                   tooltip="Music player"
                   tooltipPosition="bottom-start"
                   onClick={() => audio.toggle()} />
-              </Stack.Item>
-              <Stack.Item>
+              </Flex.Item>
+              <Flex.Item mx={0.5}>
                 <Button
                   icon={settings.visible ? 'times' : 'cog'}
                   selected={settings.visible}
@@ -62,23 +64,23 @@ export const Panel = (props, context) => {
                     : 'Open settings'}
                   tooltipPosition="bottom-start"
                   onClick={() => settings.toggle()} />
-              </Stack.Item>
-            </Stack>
+              </Flex.Item>
+            </Flex>
           </Section>
-        </Stack.Item>
+        </Flex.Item>
         {audio.visible && (
-          <Stack.Item>
+          <Flex.Item mt={1}>
             <Section>
               <NowPlayingWidget />
             </Section>
-          </Stack.Item>
+          </Flex.Item>
         )}
         {settings.visible && (
-          <Stack.Item>
+          <Flex.Item mt={1}>
             <SettingsPanel />
-          </Stack.Item>
+          </Flex.Item>
         )}
-        <Stack.Item grow>
+        <Flex.Item mt={1} grow={1}>
           <Section fill fitted position="relative">
             <Pane.Content scrollable>
               <ChatPanel lineHeight={settings.lineHeight} />
@@ -94,19 +96,21 @@ export const Panel = (props, context) => {
                     </Button>
                   )}>
                   You are either AFK, experiencing lag or the connection
-                  has closed.
+                  has closed. If the server has been nuked, you
+                  are just lagging, you should be fine in a moment.
                 </Notifications.Item>
               )}
-              {game.roundRestartedAt && (
+              {game.reconnectTimer > 0 && (
                 <Notifications.Item>
                   The connection has been closed because the server is
-                  restarting. Please wait while you automatically reconnect.
+                  restarting. Please wait while you are automatically reconnected
+                  in {game.reconnectTimer} Seconds.
                 </Notifications.Item>
               )}
             </Notifications>
           </Section>
-        </Stack.Item>
-      </Stack>
+        </Flex.Item>
+      </Flex>
     </Pane>
   );
 };
@@ -128,7 +132,9 @@ const HoboPanel = (props, context) => {
           Settings
         </Button>
         {settings.visible && (
-          <SettingsPanel />
+          <Flex.Item mt={1}>
+            <SettingsPanel />
+          </Flex.Item>
         ) || (
           <ChatPanel lineHeight={settings.lineHeight} />
         )}

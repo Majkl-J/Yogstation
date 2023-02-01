@@ -121,5 +121,3 @@
 
 	round_credits += ..()
 	return round_credits
-
-

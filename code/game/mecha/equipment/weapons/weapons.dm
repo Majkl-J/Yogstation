@@ -24,9 +24,9 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/can_attach(obj/mecha/M)
 	if(!..())
 		return FALSE
-	if((locate(/obj/item/mecha_parts/concealed_weapon_bay) in M.contents) && !((locate(/obj/item/mecha_parts/mecha_equipment/melee_weapon) in M.equipment) || (locate(/obj/item/mecha_parts/mecha_equipment/weapon) in M.equipment) ))
+	if(istype(M, /obj/mecha/combat))
 		return TRUE
-	if(M.guns_allowed)
+	if((locate(/obj/item/mecha_parts/concealed_weapon_bay) in M.contents) && !((locate(/obj/item/mecha_parts/mecha_equipment/melee_weapon) in M.equipment) || (locate(/obj/item/mecha_parts/mecha_equipment/weapon) in M.equipment) ))
 		return TRUE
 	return FALSE
 

@@ -129,11 +129,6 @@
 /mob/living/carbon/proc/toggle_throw_mode()
 	if(stat)
 		return
-	if(ismecha(loc))
-		var/obj/mecha/M = loc
-		if(M.occupant == src)
-			M.cycle_action.Activate()
-			return
 	if(in_throw_mode)
 		throw_mode_off()
 	else

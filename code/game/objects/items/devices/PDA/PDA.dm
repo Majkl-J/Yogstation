@@ -146,18 +146,18 @@ GLOBAL_LIST_EMPTY(PDAs)
 	. = ..()
 	if(!equipped)
 		if(user.client)
-			background_color = user.client.prefs.read_preference(/datum/preference/color/pda_color)
-			switch(user.client.prefs.read_preference(/datum/preference/choiced/pda_style))
-				if(PDA_FONT_MONO)
+			background_color = user.client.prefs.pda_color
+			switch(user.client.prefs.pda_style)
+				if(MONO)
 					font_index = MODE_MONO
 					font_mode = FONT_MONO
-				if(PDA_FONT_SHARE)
+				if(SHARE)
 					font_index = MODE_SHARE
 					font_mode = FONT_SHARE
-				if(PDA_FONT_ORBITRON)
+				if(ORBITRON)
 					font_index = MODE_ORBITRON
 					font_mode = FONT_ORBITRON
-				if(PDA_FONT_VT)
+				if(VT)
 					font_index = MODE_VT
 					font_mode = FONT_VT
 				else

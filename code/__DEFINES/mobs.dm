@@ -384,5 +384,3 @@
 
 ///Swarmer flags
 #define SWARMER_LIGHT_ON (1<<0)
-
-#define ACCENT_NONE "None"

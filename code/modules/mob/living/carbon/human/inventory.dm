@@ -257,9 +257,9 @@
 	else
 		O = outfit
 		if(!istype(O))
-			return FALSE
+			return 0
 	if(!O)
-		return FALSE
+		return 0
 
 	return O.equip(src, visualsOnly)
 

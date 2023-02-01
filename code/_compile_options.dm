@@ -20,8 +20,6 @@
 //#define VISUALIZE_ACTIVE_TURFS	//Highlights atmos active turfs in green
 #endif
 
-// If defined, we will NOT defer asset generation till later in the game, and will instead do it all at once, during initiialize
-//#define DO_NOT_DEFER_ASSETS
 //#define UNIT_TESTS			//Enables unit tests via TEST_RUN_PARAMETER
 
 #ifndef PRELOAD_RSC				//set to:
@@ -46,11 +44,6 @@
 #define UNIT_TESTS
 #endif
 
-#if defined(UNIT_TESTS)
-//Ensures all early assets can actually load early
-#define DO_NOT_DEFER_ASSETS
-#endif
-
 #ifdef TRAVISTESTING
 #define TESTING
 #endif
@@ -72,7 +65,3 @@
 #warn In order to build, run BUILD.bat in the root directory.
 #warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
 #endif
-
-// A reasonable number of maximum overlays an object needs
-// If you think you need more, rethink it
-#define MAX_ATOM_OVERLAYS 100

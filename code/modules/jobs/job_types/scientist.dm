@@ -23,10 +23,6 @@
 	display_order = JOB_DISPLAY_ORDER_SCIENTIST
 	minimal_character_age = 24 //Consider the level of knowledge that spans xenobio, nanites, and toxins
 
-	departments_list = list(
-		/datum/job_department/science,
-	)
-
 	changed_maps = list("EclipseStation", "OmegaStation")
 
 	mail_goodies = list(

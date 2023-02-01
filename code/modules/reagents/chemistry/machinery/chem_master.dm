@@ -25,6 +25,15 @@
 /obj/machinery/chem_master/Initialize()
 	create_reagents(100)
 
+	//Calculate the span tags and ids fo all the available pill icons
+	var/datum/asset/spritesheet/simple/assets = get_asset_datum(/datum/asset/spritesheet/simple/pills)
+	pillStyles = list()
+	for (var/x in 1 to PILL_STYLE_COUNT)
+		var/list/SL = list()
+		SL["id"] = x
+		SL["className"] = assets.icon_class_name("pill[x]")
+		pillStyles += list(SL)
+
 	. = ..()
 
 /obj/machinery/chem_master/Destroy()
@@ -142,16 +151,6 @@
 		bottle = null
 	return ..()
 
-/obj/machinery/chem_master/proc/load_styles()
-	//Calculate the span tags and ids fo all the available pill icons
-	var/datum/asset/spritesheet/simple/assets = get_asset_datum(/datum/asset/spritesheet/simple/pills)
-	pillStyles = list()
-	for (var/x in 1 to PILL_STYLE_COUNT)
-		var/list/SL = list()
-		SL["id"] = x
-		SL["className"] = assets.icon_class_name("pill[x]")
-		pillStyles += list(SL)
-
 /obj/machinery/chem_master/ui_assets(mob/user)
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/simple/pills),
@@ -191,9 +190,7 @@
 			bufferContents.Add(list(list("name" = N.name, "id" = ckey(N.name), "volume" = N.volume))) // ^
 	data["bufferContents"] = bufferContents
 
-	//Calculated once since it'll never change
-	if(!pillStyles)
-		load_styles()
+	//Calculated at init time as it never changes
 	data["pillStyles"] = pillStyles
 	return data
 

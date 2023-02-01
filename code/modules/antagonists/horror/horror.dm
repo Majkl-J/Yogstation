@@ -859,4 +859,3 @@
 	else
 		RemoveInfestActions()
 		GrantHorrorActions()
-

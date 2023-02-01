@@ -31,7 +31,7 @@ GLOBAL_LIST_EMPTY(donators)
 		GLOB.donators |= ckey
 		P = GLOB.preferences_datums[ckey]
 		if(P)
-			P.unlock_content |= DONOR_YOGS
+			P.unlock_content |= 2
 
 
 /world/update_status()
