@@ -50,6 +50,7 @@
 		D.visible_message(span_danger("[A] swipes their tail across [D]'s eye protection!"), \
 										span_userdanger("[A] blinds you with their tail!"))
 		to_chat(A, span_danger("You swipe your tail across [D]'s eye protection, failing to properly blind them!"))
+	log_combat(A, D, "tail blind (Nyan Jitsu)")
 
 //Lacerate more like degenerate (Deals 30 damage and bleeds the target)
 //I DID NOT STEAL THIS FROM FLYING FANG NOW SHUTUP
@@ -67,7 +68,7 @@
 					  span_userdanger("[A] heavily cuts your [affecting]!"))
 	A.Stun(0.5 SECONDS)
 	D.Stun(1 SECONDS)
-	log_combat(A, D, "chest cut (Nyan Jitsu)")
+	log_combat(A, D, "lacerate cut (Nyan Jitsu)")
 
 /datum/martial_art/nyanjitsu/proc/CoolName(mob/living/carbon/human/A, mob/living/carbon/human/D)
 
