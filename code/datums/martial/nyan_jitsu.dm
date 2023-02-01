@@ -145,4 +145,5 @@
 		linked_hook.linked_martial = src
 	H.mind.AddSpell(linked_hook)
 /datum/martial_art/nyanjitsu/on_remove(mob/living/carbon/human/H)
+	H.mind.spell_list.Remove(linked_hook)
 	..()
