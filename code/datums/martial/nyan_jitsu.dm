@@ -98,7 +98,7 @@
 	icon_state = "hook"
 	damage = 5
 	damage_type = BRUTE
-	hitsound = 'sound/effects/splat.ogg'
+	hitsound = 'sound/effects/thudswoosh.ogg'
 	immobilize = 4
 	range = 5
 	armour_penetration = 25
