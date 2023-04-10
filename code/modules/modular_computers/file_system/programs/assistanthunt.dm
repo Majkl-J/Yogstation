@@ -38,3 +38,20 @@
 	return data
 
 /datum/computer_file/program/assistanthunt/ui_act(action, list/params, mob/user)
+
+/datum/assistanthunt
+	var/ticket_count = 0
+	var/points = 0
+	
+	var/current_level = 1
+	/* Used to define each and every level */
+	var/assistants
+	var/waves
+	var/point_per_assistant
+	var/speed
+	var/lasers
+	var/radius
+	var/time
+
+	var/emaggable = FALSE
+	var/obj/host

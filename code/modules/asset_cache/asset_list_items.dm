@@ -248,9 +248,9 @@
 /datum/asset/simple/assistanthunt
 	assets = list(
 		"AssistantHunt_Ass.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_Ass.png',
-		"AssistantHunt_Ass_D.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_Ass_D.png'
-		"AssistantHunt_Hos.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_Hos.png'
-		"AssistantHunt_floor.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_floor.png'
+		"AssistantHunt_Ass_D.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_Ass_D.png',
+		"AssistantHunt_Hos.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_Hos.png',
+		"AssistantHunt_floor.png" = 'icons/UI_Icons/AssistantHunt/AssistantHunt_floor.png',
 	)
 
 /datum/asset/spritesheet/simple/pills
