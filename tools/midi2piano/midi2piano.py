@@ -259,11 +259,13 @@ def explode_sheet_music(sheet_music):
     for note in split_music:
         if line_counter > LINES_LIMIT-1:
             break
-        if counter+len(note) > LINE_LENGTH_LIM-2:
+        
+        if counter+len(note) > LINE_LENGTH_LIM-3:
             split_list[-1] = split_list[-1].rstrip(',')
             split_list[-1] += END_OF_LINE_CHAR
             counter = 0
             line_counter += 1
+        
         split_list.append(note)
         counter += len(note)
 
