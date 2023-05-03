@@ -29,8 +29,8 @@ General Public License version 3.
 
 
 <h3 id="modules">Modules
-<aside>(589 modules,
-    1536/8353 macros, 18.4%)</aside></h3>
+<aside>(591 modules,
+    1539/8454 macros, 18.2%)</aside></h3>
 <ul class="index-tree modules">
     <li class="has-children"><span title="code">code</span><ul class="index-tree">
     <li class="has-children"><span title="code&#x2F;__DEFINES">__DEFINES</span><ul class="index-tree">
@@ -109,6 +109,7 @@ General Public License version 3.
     <li><a href="code/__DEFINES/instruments.html" title="code&#x2F;__DEFINES&#x2F;instruments">instruments</a></li>
     <li><a href="code/__DEFINES/interaction_flags.html" title="code&#x2F;__DEFINES&#x2F;interaction_flags">interaction_flags</a></li>
     <li><a href="code/__DEFINES/inventory.html" title="code&#x2F;__DEFINES&#x2F;inventory">inventory</a></li>
+    <li><a href="code/__DEFINES/is_helpers.html" title="code&#x2F;__DEFINES&#x2F;is_helpers">is_helpers</a></li>
     <li><a href="code/__DEFINES/jobs.html" title="code&#x2F;__DEFINES&#x2F;jobs">jobs</a></li>
     <li><a href="code/__DEFINES/lighting.html" title="code&#x2F;__DEFINES&#x2F;lighting">lighting</a></li>
     <li><a href="code/__DEFINES/machines.html" title="code&#x2F;__DEFINES&#x2F;machines">machines</a></li>
@@ -463,6 +464,7 @@ SPDX-License-Identifier: MIT</li>
     </ul></li>
     </ul></li>
     <li class="has-children"><span title="code&#x2F;modules&#x2F;awaymissions">awaymissions</span><ul class="index-tree">
+    <li><a href="code/modules/awaymissions/cordon.html" title="code&#x2F;modules&#x2F;awaymissions&#x2F;cordon">cordon</a></li>
     <li><a href="code/modules/awaymissions/corpse.html" title="code&#x2F;modules&#x2F;awaymissions&#x2F;corpse">corpse</a></li>
     <li><a href="code/modules/awaymissions/gateway.html" title="code&#x2F;modules&#x2F;awaymissions&#x2F;gateway">gateway</a></li>
     <li class="has-children"><span title="code&#x2F;modules&#x2F;awaymissions&#x2F;mission_code">mission_code</span><ul class="index-tree">
@@ -883,7 +885,7 @@ SPDX-License-Identifier: MIT</li>
 
 
 <h3 id="types">Types
-<aside>(658 detailed/1411 documented/27407 total, 5.1%)</aside></h3>
+<aside>(661 detailed/1422 documented/27492 total, 5.2%)</aside></h3>
 <ul class="index-tree">
     <li><a href="global.html" title="(global)">(global)</a></li>
     <li class="has-children"><a href="area.html" title="&#x2F;area">area</a> - A grouping of tiles into a logical space, mostly used by map editors<ul class="index-tree">
@@ -1045,6 +1047,7 @@ Base for all buster arm actions<ul class="index-tree">
     <li><a href="datum/ai_project.html" title="&#x2F;datum&#x2F;ai_project">DEBUG</a></li>
     <li class="has-children"><a href="datum/antagonist.html" title="&#x2F;datum&#x2F;antagonist">Antagonist</a><ul class="index-tree">
     <li><a href="datum/antagonist/bloodsucker.html" title="&#x2F;datum&#x2F;antagonist&#x2F;bloodsucker">Bloodsucker</a></li>
+    <li><a href="datum/antagonist/changeling.html" title="&#x2F;datum&#x2F;antagonist&#x2F;changeling">Changeling</a></li>
     <li><a href="datum/antagonist/heretic.html" title="&#x2F;datum&#x2F;antagonist&#x2F;heretic">Heretic</a></li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;antagonist&#x2F;heretic_monster">Eldritch Horror</span> - Tracking reasons</li>
     <li><a href="datum/antagonist/monsterhunter.html" title="&#x2F;datum&#x2F;antagonist&#x2F;monsterhunter">Monster Hunter</a></li>
@@ -1238,7 +1241,10 @@ DONKPOCCKETS</li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;crafting_recipe&#x2F;metal_baseball_bat">Titanium Baseball Bat</span> - Antag recipes</li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;crafting_recipe&#x2F;stake">Stake</span> - Stakes</li>
     </ul></li>
-    <li><span class="no-substance">data&#x2F;</span><a href="datum/data/vending_product.html" title="&#x2F;datum&#x2F;data&#x2F;vending_product">vending record datum</a> - A datum that represents a product that is vendable</li>
+    <li class="has-children"><span title="&#x2F;datum&#x2F;data">data</span><ul class="index-tree">
+    <li><a href="datum/data/vending_custom_product.html" title="&#x2F;datum&#x2F;data&#x2F;vending_custom_product">User-inserted custom product</a> - A datum that represents a custom product that is vendable</li>
+    <li><a href="datum/data/vending_product.html" title="&#x2F;datum&#x2F;data&#x2F;vending_product">vending record datum</a> - A datum that represents a product that is vendable</li>
+    </ul></li>
     <li><a href="datum/department_goal.html" title="&#x2F;datum&#x2F;department_goal">Department goal</a> - Goals that a department can complete for monetary (or other) rewards.</li>
     <li class="has-children"><a href="datum/design.html" title="&#x2F;datum&#x2F;design">Name</a><ul class="index-tree">
     <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;RPED">Rapid Part Exchange Device</span> - Stock Parts</li>
@@ -1257,7 +1263,7 @@ DONKPOCCKETS</li>
     <li><a href="datum/design/borg_upgrade_analyzer.html" title="&#x2F;datum&#x2F;design&#x2F;borg_upgrade_analyzer">Cyborg Upgrade (Advanced Analyzer)</a></li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;borg_upgrade_rename">Cyborg Upgrade (Rename Board)</span> - Borg Upgrades</li>
     <li><a href="datum/design/borg_upgrade_surgerykit.html" title="&#x2F;datum&#x2F;design&#x2F;borg_upgrade_surgerykit">Cyborg Upgrade (Advanced Surgical Kit)</a></li>
-    <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;c38_sec">Speed Loader (.38)</span> - Weapons</li>
+    <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;c38_sec">Speed Loader (.38 rubber)</span> - Weapons</li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;cargo_express">Computer Design (Express Supply Console)</span> - Mining</li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;cyberimp_welding">Welding Shield Eyes</span> - Cybernetic Implants</li>
     <li><span class="no-substance" title="&#x2F;datum&#x2F;design&#x2F;design_disk">Design Storage Disk</span> - Disk Construction Disks</li>
@@ -1400,15 +1406,10 @@ note of an instrument.*</li>
     <li class="has-children"><a href="datum/job.html" title="&#x2F;datum&#x2F;job">job</a><ul class="index-tree">
     <li><a href="datum/job/atmos.html" title="&#x2F;datum&#x2F;job&#x2F;atmos">atmos</a></li>
     <li><a href="datum/job/captain.html" title="&#x2F;datum&#x2F;job&#x2F;captain">captain</a></li>
-    <li><a href="datum/job/chemist.html" title="&#x2F;datum&#x2F;job&#x2F;chemist">chemist</a></li>
-    <li><a href="datum/job/chief_engineer.html" title="&#x2F;datum&#x2F;job&#x2F;chief_engineer">chief_engineer</a></li>
     <li><a href="datum/job/clown.html" title="&#x2F;datum&#x2F;job&#x2F;clown">clown</a></li>
     <li><a href="datum/job/cook.html" title="&#x2F;datum&#x2F;job&#x2F;cook">cook</a></li>
     <li><a href="datum/job/detective.html" title="&#x2F;datum&#x2F;job&#x2F;detective">detective</a></li>
-    <li><a href="datum/job/doctor.html" title="&#x2F;datum&#x2F;job&#x2F;doctor">doctor</a></li>
-    <li><a href="datum/job/officer.html" title="&#x2F;datum&#x2F;job&#x2F;officer">officer</a></li>
     <li><a href="datum/job/rd.html" title="&#x2F;datum&#x2F;job&#x2F;rd">rd</a></li>
-    <li><a href="datum/job/scientist.html" title="&#x2F;datum&#x2F;job&#x2F;scientist">scientist</a></li>
     </ul></li>
     <li class="has-children"><a href="datum/job_department.html" title="&#x2F;datum&#x2F;job_department">job_department</a> - Singleton representing a category of jobs forming a department.
 NOTICE: This is NOT fully implemented everywhere. Currently only used in: Preferences menu<ul class="index-tree">
@@ -1966,6 +1967,7 @@ Will yield a &quot;?&quot;</li>
     <li><span class="no-substance">anomaly&#x2F;</span><a href="obj/effect/anomaly/pyro.html" title="&#x2F;obj&#x2F;effect&#x2F;anomaly&#x2F;pyro">pyroclastic anomaly</a></li>
     <li><span class="no-substance">beam&#x2F;</span><span class="no-substance" title="&#x2F;obj&#x2F;effect&#x2F;beam&#x2F;i_beam">infrared beam</span> - IBeam</li>
     <li><a href="obj/effect/custom_portal.html" title="&#x2F;obj&#x2F;effect&#x2F;custom_portal">portal</a></li>
+    <li><span class="no-substance">decal&#x2F;cleanable&#x2F;blood&#x2F;</span><a href="obj/effect/decal/cleanable/blood/hitsplatter.html" title="&#x2F;obj&#x2F;effect&#x2F;decal&#x2F;cleanable&#x2F;blood&#x2F;hitsplatter">blood splatter</a></li>
     <li><span class="no-substance">dummy&#x2F;</span><a href="obj/effect/dummy/phased_mob.html" title="&#x2F;obj&#x2F;effect&#x2F;dummy&#x2F;phased_mob">water</a></li>
     <li><a href="obj/effect/eldritch.html" title="&#x2F;obj&#x2F;effect&#x2F;eldritch">generic rune</a></li>
     <li><span class="no-substance">forcefield&#x2F;</span><span class="no-substance" title="&#x2F;obj&#x2F;effect&#x2F;forcefield&#x2F;mime">invisible wall</span> - Mimewalls</li>
@@ -2097,14 +2099,20 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;detective">&#x27;Detective&#x27; Core AI Module</span> - Detective</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;drone">&#x27;Mother Drone&#x27; Core AI Module</span> - Mother Drone</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;druid">&#x27;Druid&#x27; Core AI Module</span> - Druid</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;educator">&#x27;Educator&#x27; Core AI Module</span> - Educator</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;fitnesscoach">&#x27;FitnessCoach&#x27; Core AI Module</span> - FitnessCoach</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;friendbot">&#x27;Friendbot&#x27; Core AI Module</span> - Friendbot</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;gamemaster">&#x27;GameMaster&#x27; Core AI Module</span> - GameMaster</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;hippocratic">&#x27;Robodoctor&#x27; Core AI Module</span> - Robodoctor</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;hulkamania">&#x27;H.O.G.A.N.&#x27; Core AI Module</span> - H.O.G.A.N.</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;liveandletlive">&#x27;Live And Let Live&#x27; Core AI Module</span> - Live And Let Live</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;mediator">&#x27;Mediator&#x27; Core AI Module</span> - Mediator</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;metaexperiment">&#x27;Meta Experiment&#x27; Core AI Module</span> - Meta Experiment</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;mother">&#x27;Mother M(A.I.)&#x27; Core AI Module</span> - Mother</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;overlord">&#x27;Overlord&#x27; Core AI Module</span> - Overlord</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;paladin">&#x27;P.A.L.A.D.I.N. version 3.5e&#x27; Core AI Module</span> - P.A.L.A.D.I.N. 3.5e</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;paladin_devotion">&#x27;P.A.L.A.D.I.N. version 5e&#x27; Core AI Module</span> - P.A.L.A.D.I.N. 5e</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;partybot">&#x27;Partybot&#x27; Core AI Module</span> - Partybot</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;reporter">&#x27;Reportertron&#x27; Core AI Module</span> - Reporter</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;researcher">&#x27;Ethical Researcher&#x27; Core AI Module</span> - Researcher</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;revolutionary">&#x27;CommunistOS&#x27; Core AI Module</span> - Revolutionary</li>
@@ -2113,6 +2121,7 @@ Place a pool filter somewhere in the pool if you want people to be able to modif
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;silicop">&#x27;Silicop&#x27; Core AI Module</span> - Silicop</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;spotless">&#x27;Spotless Reputation&#x27; Core AI Module</span> - Spotless Reputation</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;thermurderdynamic">&#x27;Thermodynamic&#x27; Core AI Module</span> - Thermodynamic</li>
+    <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;travelguide">&#x27;TravelGuide&#x27; Core AI Module</span> - TravelGuide</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;aiModule&#x2F;core&#x2F;full&#x2F;tyrant">&#x27;T.Y.R.A.N.T.&#x27; Core AI Module</span> - T.Y.R.A.N.T.</li>
     </ul></li>
     </ul></li>
@@ -2199,7 +2208,8 @@ Puts in old analyzer</li>
     <li><a href="obj/item/buster/megabuster.html" title="&#x2F;obj&#x2F;item&#x2F;buster&#x2F;megabuster">supercharged fist</a> - Megabuster Item</li>
     </ul></li>
     <li><a href="obj/item/canvas.html" title="&#x2F;obj&#x2F;item&#x2F;canvas">canvas</a></li>
-    <li class="has-children"><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;card">card</span><ul class="index-tree">
+    <li class="has-children"><span title="&#x2F;obj&#x2F;item&#x2F;card">card</span><ul class="index-tree">
+    <li><a href="obj/item/card/id.html" title="&#x2F;obj&#x2F;item&#x2F;card&#x2F;id">identification card</a></li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;card&#x2F;mining_access_card">mining access card</span> - Conscript kit</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;card&#x2F;mining_point_card">mining points card</span> - Mining Point Card</li>
     </ul></li>
@@ -2303,7 +2313,6 @@ This has a shitload of vars on it, and I'm sorry for that, but it does make maki
     <li><span class="no-substance">automatic&#x2F;pistol&#x2F;</span><a href="obj/item/gun/ballistic/automatic/pistol/martial.html" title="&#x2F;obj&#x2F;item&#x2F;gun&#x2F;ballistic&#x2F;automatic&#x2F;pistol&#x2F;martial">martial</a> - I don't check does the user have an item in a hand, because it is a martial art action, and to use it... you need to have a empty hand</li>
     <li><span class="no-substance">bow&#x2F;energy&#x2F;</span><a href="obj/item/gun/ballistic/bow/energy/syndicate.html" title="&#x2F;obj&#x2F;item&#x2F;gun&#x2F;ballistic&#x2F;bow&#x2F;energy&#x2F;syndicate">Syndicate Hardlight Bow</a></li>
     <li><span class="no-substance">revolver&#x2F;</span><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;gun&#x2F;ballistic&#x2F;revolver&#x2F;ipcmartial">ipcmartial</span> - I don't check does the user have an item in a hand, because it is a martial art action, and to use it... you need to have a empty hand</li>
-    <li><span class="no-substance">shotgun&#x2F;</span><a href="obj/item/gun/ballistic/shotgun/ipcmartial.html" title="&#x2F;obj&#x2F;item&#x2F;gun&#x2F;ballistic&#x2F;shotgun&#x2F;ipcmartial">ipcmartial</a> - I don't check does the user have an item in a hand, because it is a martial art action, and to use it... you need to have a empty hand</li>
     </ul></li>
     <li class="has-children"><span title="&#x2F;obj&#x2F;item&#x2F;gun&#x2F;energy">energy</span><ul class="index-tree">
     <li><a href="obj/item/gun/energy/beam_rifle.html" title="&#x2F;obj&#x2F;item&#x2F;gun&#x2F;energy&#x2F;beam_rifle">particle acceleration rifle</a></li>
@@ -2545,6 +2554,7 @@ obj/item/reagent_containers/glass/bottle/leadacetate</li>
     <li><a href="obj/item/relic.html" title="&#x2F;obj&#x2F;item&#x2F;relic">strange object</a> - SPECIAL ITEMS</li>
     <li><a href="obj/item/research_notes.html" title="&#x2F;obj&#x2F;item&#x2F;research_notes">research notes</a></li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;resonator">resonator</span> - Resonator</li>
+    <li><span class="no-substance">restraints&#x2F;handcuffs&#x2F;</span><a href="obj/item/restraints/handcuffs/cable.html" title="&#x2F;obj&#x2F;item&#x2F;restraints&#x2F;handcuffs&#x2F;cable">cable restraints</a></li>
     <li><a href="obj/item/robot_module.html" title="&#x2F;obj&#x2F;item&#x2F;robot_module">Default</a></li>
     <li><a href="obj/item/robot_suit.html" title="&#x2F;obj&#x2F;item&#x2F;robot_suit">cyborg endoskeleton</a></li>
     <li class="has-children"><a href="obj/item/rsf.html" title="&#x2F;obj&#x2F;item&#x2F;rsf">Rapid Service Fabricator (RSF)</a><ul class="index-tree">
@@ -2582,6 +2592,9 @@ obj/item/reagent_containers/glass/bottle/leadacetate</li>
     <li><a href="obj/item/storage/pod.html" title="&#x2F;obj&#x2F;item&#x2F;storage&#x2F;pod">emergency space suits</a></li>
     </ul></li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;item&#x2F;syndicatedetonator">big red button</span> - Syndicate Detonator (aka the big red button)</li>
+    <li class="has-children"><a href="obj/item/tank.html" title="&#x2F;obj&#x2F;item&#x2F;tank">tank</a><ul class="index-tree">
+    <li><a href="obj/item/tank/internals.html" title="&#x2F;obj&#x2F;item&#x2F;tank&#x2F;internals">internals</a></li>
+    </ul></li>
     <li><a href="obj/item/toolset_handler.html" title="&#x2F;obj&#x2F;item&#x2F;toolset_handler">cybernetic apparatus</a></li>
     <li class="has-children"><span title="&#x2F;obj&#x2F;item&#x2F;toy">toy</span><ul class="index-tree">
     <li><span class="no-substance">cards&#x2F;</span><a href="obj/item/toy/cards/cardhand.html" title="&#x2F;obj&#x2F;item&#x2F;toy&#x2F;cards&#x2F;cardhand">hand of cards</a></li>
@@ -2676,6 +2689,7 @@ See [limbgrower_designs.dm] for everything we can make.</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;machinery&#x2F;mineral&#x2F;unloading_machine">unloading machine</span> - Unloading unit</li>
     </ul></li>
     <li><a href="obj/machinery/oven.html" title="&#x2F;obj&#x2F;machinery&#x2F;oven">oven</a></li>
+    <li><a href="obj/machinery/paystand.html" title="&#x2F;obj&#x2F;machinery&#x2F;paystand">unregistered pay stand</a></li>
     <li><a href="obj/machinery/plate_press.html" title="&#x2F;obj&#x2F;machinery&#x2F;plate_press">license plate press</a></li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;machinery&#x2F;plortrefinery">plort redemption machine</span> - Plort Redemption Machine</li>
     <li><span class="no-substance" title="&#x2F;obj&#x2F;machinery&#x2F;porta_turret_cover">turret</span> - PORTABLE TURRET COVER</li>
@@ -2804,6 +2818,7 @@ uranium</li>
     <li class="has-children"><a href="obj/structure/table.html" title="&#x2F;obj&#x2F;structure&#x2F;table">table</a><ul class="index-tree">
     <li><span class="no-substance">optable&#x2F;</span><a href="obj/structure/table/optable/abductor.html" title="&#x2F;obj&#x2F;structure&#x2F;table&#x2F;optable&#x2F;abductor">alien operating table</a></li>
     </ul></li>
+    <li><a href="obj/structure/window.html" title="&#x2F;obj&#x2F;structure&#x2F;window">window</a></li>
     </ul></li>
     <li><span class="no-substance">vehicle&#x2F;ridden&#x2F;scooter&#x2F;</span><a href="obj/vehicle/ridden/scooter/skateboard.html" title="&#x2F;obj&#x2F;vehicle&#x2F;ridden&#x2F;scooter&#x2F;skateboard">improvised skateboard</a></li>
     </ul></li>
@@ -2816,6 +2831,7 @@ uranium</li>
     <li><span class="no-substance" title="&#x2F;turf&#x2F;closed&#x2F;wall&#x2F;mineral&#x2F;titanium">wall</span> - Titanium walls</li>
     </ul></li>
     </ul></li>
+    <li><span class="no-substance">cordon&#x2F;</span><span class="no-substance" title="&#x2F;turf&#x2F;cordon&#x2F;secret">secret cordon (ghost blocking)</span> - This type of cordon will block ghosts from passing through it. Useful for stuff like Away Missions, where you feasibly want to block ghosts from entering to keep a certain map section a secret.</li>
     <li class="has-children"><a href="turf/open.html" title="&#x2F;turf&#x2F;open">open</a><ul class="index-tree">
     <li class="has-children"><span title="&#x2F;turf&#x2F;open&#x2F;floor">floor</span><ul class="index-tree">
     <li><a href="turf/open/floor/light.html" title="&#x2F;turf&#x2F;open&#x2F;floor&#x2F;light">light floor</a></li>
@@ -2835,7 +2851,7 @@ uranium</li>
 </main>
 <footer>
     yogstation.dme
-    <a href="https://github.com/Majkl-J/Yogstation/tree/699593cc5774519a3f151312c20ffa41c00ef4a8">699593c</a>
+    <a href="https://github.com/Majkl-J/Yogstation/tree/52ebc20c772c4a7a3c7aa9c3021d85a859430bc4">52ebc20</a>
         (master) &mdash; <a href="https://github.com/SpaceManiac/SpacemanDMM/blob/master/src/dmdoc/README.md">dmdoc 1.4.1</a></footer>
 </body>
 </html>
