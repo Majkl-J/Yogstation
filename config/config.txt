@@ -97,6 +97,9 @@ LOG_PDA
 ## log prayers
 LOG_PRAYER
 
+## log internet requests
+LOG_INTERNET_SOUND_REQUEST
+
 ## log lawchanges
 LOG_LAW
 
@@ -452,6 +455,8 @@ MAX_SHUTTLE_SIZE 300
 ## Enable/disable roundstart station traits
 #STATION_TRAITS
 
+## Uncomment to disable users ability to use the request internet sounds to be played.
+REQUEST_INTERNET_SOUND
 <<<<<<< HEAD
 ## Assets can opt-in to caching their results into `tmp`.
 ## This is important, as preferences assets take upwards of 30 seconds (without sleeps) to collect.

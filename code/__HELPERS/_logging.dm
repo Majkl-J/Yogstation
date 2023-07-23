@@ -133,6 +133,11 @@
 	if (CONFIG_GET(flag/log_prayer))
 		WRITE_LOG(GLOB.world_game_log, "PRAY: [text]")
 
+/// Logging for music requests
+/proc/log_internet_request(text, list/data)
+	if (CONFIG_GET(flag/log_internet_sound_request))
+		WRITE_LOG(GLOB.world_game_log, "SOUND REQUEST: [text]")
+
 /proc/log_pda(text)
 	if (CONFIG_GET(flag/log_pda))
 		WRITE_LOG(GLOB.world_pda_log, "PDA: [text]")

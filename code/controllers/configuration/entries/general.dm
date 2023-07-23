@@ -78,6 +78,9 @@
 /datum/config_entry/flag/log_adminchat	// log admin chat messages
 	protection = CONFIG_ENTRY_LOCKED
 
+/// Log internet sound requests
+/datum/config_entry/flag/log_internet_sound_request
+
 /datum/config_entry/flag/log_pda	// log pda messages
 
 /// log uplink/spellbook/codex ciatrix purchases and refunds
@@ -504,6 +507,11 @@
 	min_val = 30
 
 /datum/config_entry/flag/reopen_roundstart_suicide_roles_command_report
+
+/datum/config_entry/flag/request_internet_sound
+
+/datum/config_entry/string/request_internet_allowed
+	protection = CONFIG_ENTRY_LOCKED
 
 /datum/config_entry/flag/protect_AI_from_traitor
 
