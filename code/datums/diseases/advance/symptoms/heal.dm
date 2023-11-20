@@ -552,4 +552,4 @@
 			// Interesting downside
 			if(M.getStaminaLoss() < 65)
 				M.adjustStaminaLoss(20)
-		return TRUE
+		
